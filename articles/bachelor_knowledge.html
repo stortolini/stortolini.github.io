@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science for Management - Bachelor's Degree Knowledge</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .subtitle {
+            font-style: italic;
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+        .subtitle a {
+            color: #87CEEB;
+            text-decoration: none;
+        }
+        .subtitle a:hover {
+            text-decoration: underline;
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .intro-section {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-dark-teal);
+        }
+        .knowledge-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .knowledge-table th {
+            background-color: var(--color-dark-teal);
+            color: #ffffff;
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .knowledge-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.3s ease;
+        }
+        .knowledge-table tr:hover td {
+            background-color: #f0f8ff;
+        }
+        .knowledge-table tr:last-child td {
+            border-bottom: none;
+        }
+        .section-header {
+            background-color: #e8f4fd;
+            font-weight: bold;
+            color: var(--color-dark-teal);
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .internship-section {
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 3rem 0;
+            border-top: 4px solid var(--color-mustard-yellow);
+        }
+        .internship-section h2 {
+            text-align: center;
+            color: var(--color-dark-teal);
+            margin-bottom: 2rem;
+        }
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .company-info img {
+            width: 200px;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .company-info-text {
+            flex: 1;
+        }
+        .company-info-text a {
+            color: var(--color-dark-teal);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .company-info-text a:hover {
+            color: var(--color-mustard-yellow);
+            text-decoration: underline;
+        }
+        .skills-acquired {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 3rem 0;
+        }
+        @media (max-width: 768px) {
+            .knowledge-table {
+                font-size: 0.9rem;
+            }
+            .knowledge-table th,
+            .knowledge-table td {
+                padding: 0.75rem;
+            }
+            .company-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            .company-info img {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Computer Science for Management</h1>
+        <p class="subtitle">Bachelor's Degree - First Cycle - <a href="https://corsi.unibo.it/laurea/InformaticaManagement" target="_blank">University of Bologna - Informatica per il Management</a></p>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <div class="intro-section">
+                <p>The Internet has revolutionized the way we work and manage organizations, radically transformed the provision of services, methods of education, and learning.</p>
+                
+                <p>The Bachelor's Degree Program (three-year) that I attended aims to create professionals who, thanks to the interdisciplinary preparation provided, possess knowledge of information and communication technologies and have developed the managerial skills to be able to manage the technological, economic, legal, and social aspects of a company.</p>
+            </div>
+
+            <h2>Knowledge Acquired During the 3-Year Program</h2>
+            <p style="margin-bottom: 1rem;">My knowledge is based on the subjects studied during the program:</p>
+            
+            <table class="knowledge-table">
+                <thead>
+                    <tr>
+                        <th>Course Categories & Subjects</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="section-header">
+                        <td>Managerial-Economic Knowledge</td>
+                    </tr>
+                    <tr>
+                        <td>Business Economics (Economia Aziendale)</td>
+                    </tr>
+                    <tr>
+                        <td>Business Organization (Organizzazione Aziendale)</td>
+                    </tr>
+                    <tr>
+                        <td>Corporate Finance (Finanza Aziendale)</td>
+                    </tr>
+                    <tr>
+                        <td>Microeconomics (Microeconomia)</td>
+                    </tr>
+                    <tr>
+                        <td>Theory of the Firm (Teoria dell'Impresa)</td>
+                    </tr>
+                    <tr>
+                        <td>Strategy, Organization and Markets (Strategia, Organizzazione e Mercati)</td>
+                    </tr>
+                    <tr>
+                        <td>Entrepreneurship (Imprenditorialità)</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td>Computer Science Knowledge</td>
+                    </tr>
+                    <tr>
+                        <td>Internet Law (Diritto di Internet)</td>
+                    </tr>
+                    <tr>
+                        <td>Legal Informatics - with new regulations (Informatica Giuridica)</td>
+                    </tr>
+                    <tr>
+                        <td>Programming - Java Language</td>
+                    </tr>
+                    <tr>
+                        <td>Numerical Methods for Computing (Metodi Numerici per il Calcolo)</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Systems - Jolie Language</td>
+                    </tr>
+                    <tr>
+                        <td>Algorithms and Data Structures (Algoritmi e Strutture Dati)</td>
+                    </tr>
+                    <tr>
+                        <td>Databases - MySQL and MongoDB (Basi di Dati)</td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineering - Java and GWT (Ingegneria del Software)</td>
+                    </tr>
+                    <tr>
+                        <td>Web Technologies - HTML, CSS and JavaScript (Tecnologie Web)</td>
+                    </tr>
+                    <tr>
+                        <td>Internet Architecture (Architettura di Internet)</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td>Language Requirements</td>
+                    </tr>
+                    <tr>
+                        <td>English B1 Level</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="caption">Knowledge acquired during the 3-year study program</p>
+
+            <hr>
+
+            <div class="internship-section">
+                <h2>Internship Experience</h2>
+                
+                <div class="company-info">
+                    <div class="company-info-text">
+                        <p>I completed my curricular internship (for my bachelor's degree) at <a href="https://www.ads.it/" target="_blank">Finmatica S.p.A</a>, in February - March 2021 (Bologna), specifically in the section of ADS S.p.A, which develops solutions for public administration.</p>
+                        
+                        <p>During my internship, I studied the regulations of the Italian Digital Agency (AgID), which apply strict restrictions on the appearance and functionality provided for public administration portals.</p>
+                    </div>
+                    <div>
+                        <a href="https://www.agid.gov.it/" target="_blank">
+                            <img src="https://sotortolini.files.wordpress.com/2021/04/agid-logo.png" alt="AgID Logo">
+                        </a>
+                        <p style="text-align: center; font-size: 0.9rem; margin-top: 0.5rem;">
+                            Documentation studied: <a href="https://docs.italia.it/italia/designers-italia/design-linee-guida-docs/it/stabile/index.html" target="_blank">Design Guidelines</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="skills-acquired">
+                    <h3 style="color: var(--color-dark-teal); margin-bottom: 1rem;">Skills Acquired</h3>
+                    <p>I acquired new skills in computer science, particularly with <strong>HTML</strong> and <strong>jQuery</strong>. I also worked with the <a href="https://www.liferay.com/it/" target="_blank">Liferay</a> platform (open source), which is oriented toward portal management and collaborative work, developed in Java and able to take full advantage of modern Web 2.0 technologies.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
