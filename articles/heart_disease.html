@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Machines to Detect Heart Disease</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        .pdf-viewer {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Teaching Machines to Detect Heart Disease</h1>
+    </header>
+    <main>
+        <section class="article-content">
+            <p>I had the opportunity to work on a fascinating project with my colleague Myriam Pollaccia. We dove into the intersection of machine learning and healthcare, specifically focusing on heart disease prediction.</p>
+            <h2>Why Heart Disease Detection Matters</h2>
+            <p>The statistics are sobering: cardiovascular diseases remain the leading cause of death in many countries. In Italy alone, more than 230,000 people die annually from various heart conditions. Even more concerning is that 30-40% of fatal events in the 35-64 age group occur rapidly after symptoms appear, often before the patient can reach a hospital.</p>
+            <h2>The Challenge of Medical Data</h2>
+            <p>One of our biggest challenges wasn't technical - it was finding good data. Medical data is highly sensitive and often restricted, making it difficult for researchers to access comprehensive, recent datasets. After evaluating several options, we settled on a dataset combining five different heart disease datasets, giving us more than 900+ observations to work with, but really not sufficient.</p>
+            <p>Our approach focused on understanding not just the numbers, but the medical significance behind each data point. We analyzed various factors including:</p>
+            <ul>
+                <li>Age and gender patterns in heart disease</li>
+                <li>Different types of chest pain</li>
+                <li>Blood pressure and cholesterol levels</li>
+                <li>ECG results</li>
+                <li>Exercise-induced symptoms</li>
+            </ul>
+            <p>What made our research interesting was our careful consideration of which data points to include or exclude. For instance, we discovered that some commonly tracked metrics, like blood pressure readings that only included systolic pressure, weren't as reliable as previously thought.</p>
+            <h2>The Machine Learning Journey</h2>
+            <p>We tested seven different machine learning algorithms and one deep learning approach. Here's what we found:</p>
+            <ul>
+                <li><strong>Best Performer:</strong> AdaBoost algorithm achieved 90% accuracy</li>
+                <li><strong>Strong Contenders:</strong> Random Forest and XGBoost both reached 89% accuracy</li>
+                <li><strong>Solid Performers:</strong> Support Vector Machine (88%) and KNN (87%)</li>
+                <li><strong>Deep Learning:</strong> Our Neural Network achieved 89% accuracy, showing that sometimes simpler ML approaches can be just as effective</li>
+            </ul>
+            <h2>Real-World Implications</h2>
+            <p>While our results are promising, they highlighted some crucial challenges in medical AI:</p>
+            <ul>
+                <li><strong>Data Quality:</strong> The medical field needs better standardization of health data collection and sharing</li>
+                <li><strong>Feature Selection:</strong> Not all medical measurements are equally valuable for prediction</li>
+                <li><strong>Algorithm Choice:</strong> Sometimes simpler algorithms can outperform more complex ones</li>
+            </ul>
+            <h2>Looking Forward</h2>
+            <p>This project opened my eyes to both the potential and limitations of AI in healthcare. While we can achieve impressive accuracy in predicting heart disease, the real challenge lies in gathering comprehensive, high-quality medical data.</p>
+            <p>The future looks promising - imagine a world where we could combine more diverse data points like lifestyle factors, genetic information, and long-term health histories. This could revolutionize how we predict and prevent heart disease.</p>
+            <p>Working on HeartGuard taught me that the intersection of AI and healthcare isn't just about building sophisticated algorithms - it's about understanding the medical context, ensuring data quality, and choosing the right tools for the job.</p>
+        </section>
+        <div class="pdf-viewer">
+            <h2>Visualize the Complete Paper</h2>
+            <iframe src="../assets/papers/heart_disease_paper.pdf" title="Heart Disease Paper"></iframe>
+        </div>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#HealthTech</span>
+                <span class="hashtag">#MachineLearning</span>
+                <span class="hashtag">#CardiovascularHealth</span>
+                <span class="hashtag">#DigitalTransformation</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

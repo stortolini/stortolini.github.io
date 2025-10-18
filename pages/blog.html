@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Blog Network - Stefano Ortolini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        :root {
+            --color-dark-teal: #65558F;  
+            --color-burgundy: #21005D;   
+            --color-salmon-pink: #7D5260; 
+            --color-mustard-yellow: #FFD8E4; 
+            --color-light-blue: #FFFFFF; 
+            --color-pale-pink: #FFFFFF;   
+            --color-text-dark: #1D192B;  
+            --color-text-light: #F7F2FA; 
+            --radius-sm: 8px;
+            --radius-md: 15px;
+            --radius-lg: 25px;
+        }
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: var(--color-pale-pink);
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+        
+        .node:hover {
+            filter: brightness(1.2) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+            stroke-width: 3;
+        }
+        
+        .link {
+            stroke: var(--color-dark-teal);
+            stroke-opacity: 0.2;
+            fill: none;
+        }
+        
+        .node-text {
+            fill: var(--color-text-dark);
+            text-anchor: middle;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--color-burgundy);
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--color-text-light);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var (--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="info">Scroll to zoom • Click to read • Drag to explore</div>
+    <a href="../index.html" id="back-btn">Back to Home</a>
+    <svg id="network"></svg>
+    
+    <script>
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const layerSpacing = width / 5;
+        const nodeSpacing = height / 8;
+        
+        // Define neural network structure
+        const layers = [
+            { // Input layer
+                nodes: [
+                    { id: 'input1', title: 'Tech Trends', size: 'large', link: 'tech-trends.html' },
+                    { id: 'input2', title: 'AI Research', size: 'large', link: 'ai-research.html' },
+                    { id: 'input3', title: 'Web Dev', size: 'medium', link: 'web-dev.html' },
+                ]
+            },
+            { // Hidden layer 1
+                nodes: [
+                    { id: 'hidden1_1', title: 'Machine Learning', size: 'small', link: 'ml.html' },
+                    { id: 'hidden1_2', title: 'Quantum', size: 'small', link: 'quantum.html' },
+                    { id: 'hidden1_3', title: 'Blockchain', size: 'medium', link: 'blockchain.html' },
+                    { id: 'hidden1_4', title: 'Security', size: 'small', link: 'security.html' },
+                ]
+            },
+            { // Hidden layer 2
+                nodes: [
+                    { id: 'hidden2_1', title: 'Deep Learning', size: 'small', link: 'deep-learning.html' },
+                    { id: 'hidden2_2', title: 'Neural Nets', size: 'large', link: 'neural-nets.html' },
+                    { id: 'hidden2_3', title: 'Algorithms', size: 'small', link: 'algorithms.html' },
+                    { id: 'hidden2_4', title: 'Data Science', size: 'medium', link: 'data-science.html' },
+                    { id: 'hidden2_5', title: 'Cloud', size: 'small', link: 'cloud.html' },
+                ]
+            },
+            { // Hidden layer 3
+                nodes: [
+                    { id: 'hidden3_1', title: 'Ethics', size: 'small', link: 'ethics.html' },
+                    { id: 'hidden3_2', title: 'Future Tech', size: 'medium', link: 'future-tech.html' },
+                    { id: 'hidden3_3', title: 'Innovation', size: 'small', link: 'innovation.html' },
+                    { id: 'hidden3_4', title: 'Research', size: 'small', link: 'research.html' },
+                ]
+            },
+            { // Output layer
+                nodes: [
+                    { id: 'output1', title: 'Tech Philosophy', size: 'large', link: 'philosophy.html' },
+                    { id: 'output2', title: 'Digital Future', size: 'large', link: 'digital-future.html' },
+                ]
+            }
+        ];
+        
+        // Create nodes with positions
+        const nodes = [];
+        const sizeMap = {
+            small: 25,
+            medium: 35,
+            large: 45
+        };
+        
+        // Color palette matching the main site
+        const nodeColors = [
+            '#65558F', // dark-teal
+            '#21005D', // burgundy
+            '#7D5260', // salmon-pink
+            '#FFD8E4', // mustard-yellow (lighter shade for visibility)
+            '#65558F'  // back to dark-teal
+        ];
+        
+        layers.forEach((layer, layerIndex) => {
+            const x = layerSpacing * (layerIndex + 0.5);
+            const layerHeight = layer.nodes.length * nodeSpacing;
+            const yOffset = (height - layerHeight) / 2;
+            
+            layer.nodes.forEach((node, nodeIndex) => {
+                nodes.push({
+                    ...node,
+                    x: x,
+                    y: yOffset + nodeSpacing * (nodeIndex + 0.5),
+                    radius: sizeMap[node.size],
+                    layer: layerIndex,
+                    color: nodeColors[layerIndex]
+                });
+            });
+        });
+        
+        // Create links between all nodes in adjacent layers
+        const links = [];
+        for (let l = 0; l < layers.length - 1; l++) {
+            layers[l].nodes.forEach(sourceNode => {
+                layers[l + 1].nodes.forEach(targetNode => {
+                    links.push({
+                        source: sourceNode.id,
+                        target: targetNode.id
+                    });
+                });
+            });
+        }
+        
+        const svg = d3.select('#network')
+            .attr('width', width)
+            .attr('height', height);
+        
+        const g = svg.append('g');
+        
+        // Create links
+        const link = g.append('g')
+            .selectAll('path')
+            .data(links)
+            .enter().append('path')
+            .attr('class', 'link')
+            .attr('d', d => {
+                const source = nodes.find(n => n.id === d.source);
+                const target = nodes.find(n => n.id === d.target);
+                // Create curved paths for more organic look
+                const midX = (source.x + target.x) / 2;
+                return `M ${source.x} ${source.y} Q ${midX} ${source.y} ${midX} ${(source.y + target.y) / 2} T ${target.x} ${target.y}`;
+            });
+        
+        // Create node groups
+        const nodeGroup = g.append('g')
+            .selectAll('g')
+            .data(nodes)
+            .enter().append('g')
+            .attr('transform', d => `translate(${d.x}, ${d.y})`);
+        
+        // Add circles
+        const node = nodeGroup.append('circle')
+            .attr('class', 'node')
+            .attr('r', d => d.radius)
+            .attr('fill', d => d.color)
+            .attr('stroke', 'var(--color-text-light)')
+            .attr('stroke-width', 2)
+            .attr('opacity', 0.9)
+            .on('click', (event, d) => {
+                window.location.href = `articles/${d.link}`;
+            });
+        
+        // Add text with better styling
+        const text = nodeGroup.append('text')
+            .attr('class', 'node-text')
+            .text(d => d.title)
+            .style('font-size', d => d.size === 'small' ? '12px' : d.size === 'medium' ? '14px' : '16px')
+            .style('opacity', d => d.size === 'large' ? 1 : 0);
+        
+        // Zoom functionality
+        let currentScale = 1;
+        const zoom = d3.zoom()
+            .scaleExtent([0.5, 5])
+            .on('zoom', (event) => {
+                g.attr('transform', event.transform);
+                currentScale = event.transform.k;
+                
+                // Show text based on zoom level and node size
+                text.transition()
+                    .duration(200)
+                    .style('opacity', d => {
+                        if (d.size === 'large') return 1;
+                        if (d.size === 'medium' && currentScale > 1.5) return 1;
+                        if (d.size === 'small' && currentScale > 2.5) return 1;
+                        return 0;
+                    })
+                    .style('font-size', d => {
+                        const baseSize = d.size === 'small' ? 10 : d.size === 'medium' ? 12 : 14;
+                        return `${baseSize / Math.sqrt(currentScale)}px`;
+                    });
+            });
+        
+        svg.call(zoom);
+        
+        // Add pulsing animation to links with smoother transitions
+        function animateLinks() {
+            link.transition()
+                .duration(3000)
+                .attr('stroke-opacity', 0.1)
+                .transition()
+                .duration(3000)
+                .attr('stroke-opacity', 0.3)
+                .on('end', animateLinks);
+        }
+        animateLinks();
+        
+        // Responsive
+        window.addEventListener('resize', () => {
+            location.reload(); // Simple solution to recalculate positions
+        });
+    </script>
+</body>
+</html>
