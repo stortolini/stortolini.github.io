@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning for Object Detection in Mobile Vision - Master's Thesis at Technogym</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .subtitle {
+            font-style: italic;
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .image-gallery {
+            margin: 2rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            border-radius: var(--radius-md);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .image-gallery::-webkit-scrollbar {
+            height: 10px;
+        }
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: var(--color-dark-teal);
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: var(--color-mustard-yellow);
+        }
+        .gallery-item {
+            display: inline-block;
+            width: 400px;
+            height: 300px;
+            margin: 0 1rem;
+            vertical-align: top;
+        }
+        .gallery-item:first-child {
+            margin-left: 2rem;
+        }
+        .gallery-item:last-child {
+            margin-right: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-hint {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .media-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .media-text.reverse {
+            flex-direction: row-reverse;
+        }
+        .media-text img {
+            width: 30%;
+            max-width: 300px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text-content {
+            flex: 1;
+        }
+        .company-section {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        .company-section h2 {
+            color: var(--color-dark-teal);
+            margin-bottom: 1rem;
+        }
+        .thesis-button {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .thesis-button a {
+            background: var(--color-dark-teal);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .thesis-button a:hover {
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .summary-section {
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-dark-teal);
+        }
+        .summary-section h2 {
+            color: var(--color-dark-teal);
+            margin-bottom: 1rem;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 3rem 0;
+        }
+        @media (max-width: 768px) {
+            .media-text, .media-text.reverse {
+                flex-direction: column;
+            }
+            .media-text img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Deep Learning for Object Detection in Mobile Vision</h1>
+        <p class="subtitle">Master's Thesis at Technogym S.p.A - Computer Science - University of Bologna, Italy</p>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <p><strong>I completed my master's thesis at Technogym S.p.A, collaborating with different teams and achieving excellent results.</strong> I contributed to the development of a small digital transformation towards the <strong>use of deep learning</strong>. I also participated in research activities in the field of UX/UI Caring and Innovation.</p>
+
+            <div class="company-section">
+                <div class="media-text">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/technogym-logo-vector-1.png" alt="Technogym Logo">
+                    <div class="media-text-content">
+                        <h2>About Technogym</h2>
+                        <p><strong>Technogym is an Italian company and world leader in the production of sports and leisure equipment based in Cesena, Italy.</strong> It was founded in 1983 by Nerio Alessandri.</p>
+                        <p>The company has been listed on the Milan Stock Exchange since May 3, 2016, and is part of the FTSE Italia Mid Cap index of the MTA.</p>
+                        <p>It has about 55,000 installations worldwide, in 35,000 wellness centers and 20,000 private homes. The company employs 2,000 people in 14 branches in Europe, the United States, Asia, the Middle East, Australia and South America.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2>Master's Degree Project</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://sotortolini.wordpress.com/wp-content/uploads/2023/05/pxl_20240216_183840903.jpg" alt="Thesis Presentation">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.wordpress.com/wp-content/uploads/2023/05/sofia-tortolini-1-1.jpg" alt="Working at Technogym">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.wordpress.com/wp-content/uploads/2023/05/sofia-tortolini-14-1.jpg" alt="Team Collaboration">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.wordpress.com/wp-content/uploads/2023/05/sofia-tortolini-36-1.jpg" alt="Research Activities">
+                </div>
+            </div>
+            <p class="gallery-hint">← Scroll horizontally to see more images →</p>
+
+            <div class="summary-section">
+                <h2>Abstract</h2>
+                <p>In the realm of vision using mobile devices and image-processing networks, object detection presents a formidable challenge. Conducted entirely within Technogym S.p.A., this thesis embarked on a comprehensive exploration facilitated by the company's research-oriented vision.</p>
+                
+                <p>The project, granted expansive scope by Technogym's commitment to innovation, entailed a meticulous process. Beginning with an extensive review of tools and state-of-the-art detection products as well as company possible use cases for developing AI in apps, the research progressed to establish a tailored pipeline. This pipeline encompassed image collection, augmentation through in-house software, and iterative development of a model adept at processing the surrounding environment for gym equipment recognition.</p>
+                
+                <p>While the underlying neural network leveraged high-level implementations rather than custom-built architectures, numerous iterations (named executions) ensured to attain satisfactory recognition (approximately 70%-80% average precision). This achievement, though sufficient for the present, laid the groundwork for subsequent dedicated advancements.</p>
+                
+                <p>A significant portion of the thesis focused on constructing an iOS mobile app capable of real-time processing using the developed models. This not only provided the entire team with a practical benchmark for comparisons but also facilitated concrete demonstrations. The project's success is emphasized by its adherence to deadlines, enabling the delivery of tangible results promptly.</p>
+            </div>
+
+            <hr>
+
+            <h2>Access to Thesis</h2>
+            <p>My thesis is under privacy control and not available to the public:</p>
+            
+            <div class="thesis-button">
+                <a href="https://amslaurea.unibo.it/id/eprint/30862/" target="_blank">View Thesis Record</a>
+            </div>
+
+            <p>I also completed a post-curricular internship. This allowed me to continue the project initially defined as my thesis, but also to range into other extraordinarily engaging and interesting projects.</p>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#ObjectDetection</span>
+                <span class="hashtag">#MobileVision</span>
+                <span class="hashtag">#ImageProcessing</span>
+                <span class="hashtag">#AIinApps</span>
+                <span class="hashtag">#GymEquipmentRecognition</span>
+                <span class="hashtag">#NeuralNetworks</span>
+                <span class="hashtag">#iOSAppDevelopment</span>
+                <span class="hashtag">#RealTimeProcessing</span>
+                <span class="hashtag">#AIResearch</span>
+                <span class="hashtag">#ComputerVision</span>
+                <span class="hashtag">#MachineLearning</span>
+                <span class="hashtag">#AppDevelopment</span>
+                <span class="hashtag">#TechInnovation</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

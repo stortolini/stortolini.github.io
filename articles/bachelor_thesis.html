@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiftFits: Android Mobile App for Social Wishlist Sharing - Bachelor's Thesis</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .subtitle {
+            font-style: italic;
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .image-gallery {
+            margin: 2rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            border-radius: var(--radius-md);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .image-gallery::-webkit-scrollbar {
+            height: 10px;
+        }
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: var(--color-dark-teal);
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: var(--color-mustard-yellow);
+        }
+        .gallery-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            margin: 0 1rem;
+            vertical-align: top;
+        }
+        .gallery-item:first-child {
+            margin-left: 2rem;
+        }
+        .gallery-item:last-child {
+            margin-right: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-hint {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .media-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .media-text.reverse {
+            flex-direction: row-reverse;
+        }
+        .media-text img {
+            width: 40%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text-content {
+            flex: 1;
+        }
+        .thesis-button {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .thesis-button a {
+            background: var(--color-dark-teal);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .thesis-button a:hover {
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .summary-section {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        .summary-section h2 {
+            color: var(--color-dark-teal);
+            margin-bottom: 1rem;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 3rem 0;
+        }
+        @media (max-width: 768px) {
+            .media-text, .media-text.reverse {
+                flex-direction: column;
+            }
+            .media-text img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>GiftFits: Android Mobile App for Social Wishlist Sharing</h1>
+        <p class="subtitle">Bachelor's Thesis - Computer Science for Management - University of Bologna, Italy</p>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <h2>Project Overview</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/domainmodel.png" alt="Domain Model Diagram">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/photo_2021-04-15_10-34-21.jpg" alt="App Interface Screenshot">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/photo_2021-04-15_10-34-04.jpg" alt="User Interface Design">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/image.png" alt="Application Architecture">
+                </div>
+            </div>
+            <p class="gallery-hint">← Scroll horizontally to see more images →</p>
+
+            <p>For my undergraduate thesis, I developed an Android application: "<em>Design and Implementation of GiftFits, an Android Mobile App for Wishlist Sharing in a Social Environment</em>".</p>
+
+            <hr>
+
+            <div class="summary-section">
+                <h2>Abstract</h2>
+                <p>During the pandemic months, people often remained confined at home, separated from their loved ones and isolated, yet they didn't abandon festivities and continued to invest part of their savings in purchasing gifts for various occasions. However, every year, 30 million tons of waste are thrown away in Italy alone, including functional objects—a problem that can no longer be ignored.</p>
+                
+                <p>A mobile app that is always available to users, given the portability and frequency of smartphone use, could implement a system capable of avoiding unnecessary waste of objects without removing the pleasure of giving gifts or thinking of someone special. Considering that 75% of Italians declare that it's important for a gift to reflect the recipient's personality, and that social sharing and friendship dynamics have extremely high usage rates (35 million active Italian users on social networks), we propose GiftFits as a solution.</p>
+                
+                <p>GiftFits is an application capable of saving wishlists to an online database and sharing them with friends, reducing cases of unwanted, duplicate, or unappreciated gifts that end up being thrown away. In this thesis, we will discuss this system—a necessary step towards ending such waste and difficulties. We will examine its internal architecture, the comprehensive iterative software development process, and through in-depth analysis, the requirements needed to position ourselves alongside the competition while successfully surpassing it.</p>
+            </div>
+
+            <hr>
+
+            
+            <img src="https://sotortolini.files.wordpress.com/2022/05/opera_senza_titolo.png" alt="GiftFits Logo" style="display: block; margin: 2rem auto; max-width: 500px;">
+            
+
+            <h2>Technical Implementation</h2>
+            <div class="media-text">
+                <div class="media-text-content">
+                    <p>To develop this thesis, I leveraged my prior knowledge in management and business strategies, as well as my technical skills in Android programming, software engineering, databases, and web development (I also built a dedicated newsletter).</p>
+                    
+                    <p>I utilized IT tools such as <strong>Jira</strong>, <strong>BitBucket</strong>, and <strong>Git</strong> for code management, and studied Google's <a href="https://firebase.google.com/products/realtime-database" target="_blank">Realtime Firebase</a> database with JSON data storage to ensure continuous real-time updates for users.</p>
+                </div>
+            </div>
+
+            <div class="media-text reverse">
+                <div class="media-text-content">
+                    <p>Additionally, I conducted research on <a href="https://material.io/" target="_blank">Material Design</a> to make the app visually appealing and up-to-date with modern design standards.</p>
+                    
+                    <p>Within 3 months of beta releases and updates, I achieved <strong>more than 50 active users</strong>, authenticated through <a href="https://firebase.google.com/products/auth" target="_blank">Firebase Authentication</a>. I am confident about making the application available on a large scale and launching it on the Play Store, enriching it with new features.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2>Access to Thesis</h2>
+            <p>My thesis is under privacy control and not available to the public:</p>
+            
+            <div class="thesis-button">
+                <a href="https://amslaurea.unibo.it/id/eprint/22928/" target="_blank">View Thesis Record</a>
+            </div>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#SocialWishlist</span>
+                <span class="hashtag">#MaterialDesign</span>
+                <span class="hashtag">#MobileDevelopment</span>
+                <span class="hashtag">#UserExperience</span>
+                <span class="hashtag">#BugTracking</span>
+                <span class="hashtag">#MVP</span>
+                <span class="hashtag">#Personalization</span>
+                <span class="hashtag">#DatabaseManagement</span>
+                <span class="hashtag">#MobileCommerce</span>
+                <span class="hashtag">#SustainableGifting</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
