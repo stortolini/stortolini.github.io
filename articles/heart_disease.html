@@ -47,11 +47,36 @@
             border-radius: var(--radius-md);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var (--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <header class="main-header">
         <h1>Teaching Machines to Detect Heart Disease</h1>
+        <a href="../index.html" id="back-btn">Back to Home</a>
     </header>
     <main>
         <section class="article-content">
