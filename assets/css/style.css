@@ -343,69 +343,53 @@ section {
     display: flex;
     flex-direction: column;
     background-color: var(--color-light-blue);
+    border: 2px solid var(--color-burgundy); /* Add border */
     border-radius: var(--radius-xl);
     overflow: hidden;
     text-align: center;
     text-decoration: none;
     color: inherit;
-    padding-bottom: var(--spacing-md);
-    padding-top: var(--spacing-sm);
-    height: auto;
-    box-shadow: none;
-    border: none;
+    height: 400px; /* Set a fixed height for consistent layout */
     position: relative;
     transition: background-color 0.3s ease-out;
 }
 
-.project-card:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, #6A11CB 0%, #2575FC 100%);
-    border-radius: var(--radius-xl);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
-
 .project-card img {
     width: 100%;
-    height: 250px;
+    height: 50%; /* Ensure the image occupies 50% of the card */
     object-fit: cover;
-    border-top-left-radius: var(--radius-xl);
-    border-top-right-radius: var(--radius-xl);
-    position: relative; 
-    z-index: 2; 
+    border-bottom: 2px solid var(--color-burgundy); /* Add border below the image */
+}
+
+.project-card .project-description {
+    flex: 1; /* Ensure the description takes the remaining 50% */
+    padding: var(--spacing-sm);
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-light-blue);
+    transition: background-color 0.3s ease-out;
+}
+
+.project-card h3,
+.project-card p {
+    margin: var(--spacing-sm) var(--spacing-md);
+    color: var(--color-dark-teal);
+    transition: color 0.3s ease-out;
 }
 
 .project-card h3 {
     font-size: 1.5rem;
-    margin: var(--spacing-md) var(--spacing-md) var(--spacing-xs) var(--spacing-md);
-    color: var(--color-dark-teal);
-    position: relative;
-    z-index: 2; 
-    transition: color 0.3s ease-out;
+    margin-bottom: var(--spacing-xs);
 }
 
 .project-card p {
     font-size: 1rem;
-    margin: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
-    color: var(--color-text-dark);
-    position: relative; 
-    z-index: 2;
-    transition: color 0.3s ease-out;
 }
 
-/* Cambia il colore del testo su hover per contrasto con il gradiente scuro */
+.project-card:hover .project-description {
+    background: linear-gradient(to right, #6A11CB 0%, #2575FC 100%); /* Apply gradient only to the description */
+}
+
 .project-card:hover h3,
 .project-card:hover p {
     color: white;
