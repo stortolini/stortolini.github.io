@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Tracking Technology: Insights from a Research Seminar</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .image-gallery {
+            margin: 2rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            border-radius: var(--radius-md);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .image-gallery::-webkit-scrollbar {
+            height: 10px;
+        }
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: var(--color-dark-teal);
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: var(--color-mustard-yellow);
+        }
+        .gallery-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            margin: 0 1rem;
+            vertical-align: top;
+        }
+        .gallery-item:first-child {
+            margin-left: 2rem;
+        }
+        .gallery-item:last-child {
+            margin-right: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-hint {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .video-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .media-text.reverse {
+            flex-direction: row-reverse;
+        }
+        .media-text img {
+            width: 40%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text-content {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .media-text, .media-text.reverse {
+                flex-direction: column;
+            }
+            .media-text img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Eye Tracking Technology: Insights from a Research Seminar</h1>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <p><strong>Eye tracking</strong> is the process of measuring either the point of gaze (where one is looking) or the motion of an eye relative to the head.</p>
+            
+            <div class="media-text">
+                <img src="https://sotortolini.files.wordpress.com/2023/05/whatsapp-image-2023-05-13-at-15.16.07-2.jpeg?w=1024" alt="Eye tracking visualization">
+                <div class="media-text-content">
+                    <p>An <strong>eye tracker</strong> is a device for measuring eye positions and eye movement. Eye trackers are used in research on the visual system, in psychology, in marketing, as an input device for human-computer interaction, and in product design.</p>
+                </div>
+            </div>
+
+            <p>In addition, eye trackers are increasingly being used for assistive and rehabilitative applications such as controlling wheelchairs, robotic arms, and prostheses. There are several methods for measuring eye movement, with the most popular variant using video images to extract eye position.</p>
+
+            <div class="media-text reverse">
+                <img src="https://sotortolini.files.wordpress.com/2023/05/immagine-2023-05-13-153116.jpg?w=1024" alt="Seminar presentation">
+                <div class="media-text-content">
+                    <p>I attended a <strong>seminar on this topic thanks to the availability of <a href="https://www.alexandria.unisg.ch/entities/person/Kenan_Bektas/publications" target="_blank" rel="noreferrer noopener">Kenan Bektas</a> and Prof. Mayer at the University of Cesena</strong>.</p>
+                </div>
+            </div>
+
+            <p>On this occasion, I learned more about the topic and especially about the potential of this technology but also its "risks" on society.</p>
+
+            <h2>Workshop Highlights</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/whatsapp-image-2023-05-13-at-15.29.10.jpeg" alt="Workshop session 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/whatsapp-image-2023-05-13-at-15.29.05.jpeg" alt="Workshop session 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/whatsapp-image-2023-05-13-at-15.16.08.jpeg" alt="Workshop session 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/whatsapp-image-2023-05-13-at-15.16.07-1.jpeg" alt="Workshop session 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/whatsapp-image-2023-05-13-at-15.16.07.jpeg" alt="Workshop session 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/img-20230504-wa0019.jpg?w=1024" alt="Group photo from the seminar"">
+                </div>
+            </div>
+            <p class="gallery-hint">← Scroll horizontally to see more images →</p>
+
+            <h2>Key Learnings</h2>
+            <p>I understood the difference between Ubiquitous Computing and Context-Aware Computing. The workshop allowed us to investigate how the technology works and to test some of the research that are currently being tracked.</p>
+
+            <p><strong>Really a good experience and a lot to learn!</strong></p>
+
+            <h2>Reading Activity Example</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/w0stIfkXbPE" title="Example of reading activity - recorded during the seminar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p style="margin-top: 0.5rem; font-style: italic;">Example of reading activity - recorded during the seminar</p>
+            </div>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#EyeTracking</span>
+                <span class="hashtag">#HCI</span>
+                <span class="hashtag">#Research</span>
+                <span class="hashtag">#UbiquitousComputing</span>
+                <span class="hashtag">#UniversityOfCesena</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
