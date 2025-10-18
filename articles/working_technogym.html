@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer & Data Scientist at Technogym R&D - Sofia Tortolini</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .subtitle {
+            font-style: italic;
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .project-section {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-dark-teal);
+        }
+        .project-section h3 {
+            color: var(--color-dark-teal);
+            margin-bottom: 1rem;
+        }
+        .technical-section {
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        .technical-section h2 {
+            color: var(--color-dark-teal);
+            margin-bottom: 1rem;
+        }
+        .approach-section {
+            background-color: #fff5e6;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-mustard-yellow);
+        }
+        .approach-section h2 {
+            color: var(--color-dark-teal);
+            margin-bottom: 1rem;
+        }
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+        .project-list li {
+            background-color: #ffffff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .project-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .focus-item {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .focus-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 3rem 0;
+        }
+        @media (max-width: 768px) {
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .tech-stack-section {
+            background-color: #f3f4f6;
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        .tech-stack-section h2 {
+            color: var(--color-dark-teal);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .tech-category {
+            margin-bottom: 2rem;
+        }
+        .tech-category h3 {
+            color: var(--color-dark-teal);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-mustard-yellow);
+        }
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .tech-badge {
+            background-color: #ffffff;
+            color: var(--color-dark-teal);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .tech-badge:hover {
+            border-color: var(--color-mustard-yellow);
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tech-badge.ai-ml {
+            border-left: 4px solid #4285f4;
+        }
+        .tech-badge.cloud {
+            border-left: 4px solid #34a853;
+        }
+        .tech-badge.database {
+            border-left: 4px solid #ea4335;
+        }
+        .tech-badge.dev-tools {
+            border-left: 4px solid #fbbc04;
+        }
+        .tech-badge.frameworks {
+            border-left: 4px solid #9c27b0;
+        }
+        .tech-badge.testing {
+            border-left: 4px solid #ff6d00;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>AI Engineer & Data Scientist at Technogym R&D</h1>
+        <p class="subtitle">Professional Experience - Sofia Tortolini</p>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <p><strong>As an AI Engineer & Data Scientist at Technogym R&D, I've been driving innovation in fitness technology through artificial intelligence and machine learning solutions.</strong></p>
+
+            <h2>Key Projects & Initiatives</h2>
+            
+            <div class="project-section">
+                <h3>AI-Powered Fitness Solutions</h3>
+                <ul class="project-list">
+                    <li>Created computer vision solutions for automatic workout recognition and digitization, helping bridge the gap between physical training environments and digital platforms, enabling trainers to quickly digitize their training plans.</li>
+                    <li>Built an AI-driven recommendation engine that personalizes fitness content suggestions for users based on their training preferences, activity history, and goals. The system profiles users across multiple dimensions including training days, content types, and macro activities.</li>
+                    <li>Created a fully AI-based workout prescription system that generates personalized training programs tailored to individual user profiles, fitness levels, and objectives.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Machine Learning & Computer Vision</h3>
+                <ul class="project-list">
+                    <li>Originated as a thesis project, this initiative explored object detection capabilities for recognizing equipment, with focus on feasibility and scalability for creating business value.</li>
+                    <li>Developed face recognition systems for trainer identification within fitness facilities, exploring both traditional and vector-based approaches.</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h2>AI Infrastructure & Data Engineering</h2>
+            
+            <div class="project-section">
+                <h3>Vector Databases & ETL</h3>
+                <p>Established and maintained ETL pipelines for physical activity data, implementing vector embeddings and similarity search capabilities using modern database technologies.</p>
+            </div>
+
+            <div class="project-section">
+                <h3>Translation Services</h3>
+                <p>Built AI-powered translation systems for multilingual content management, handling complex text structures including placeholders and character limitations.</p>
+            </div>
+
+            <div class="project-section">
+                <h3>Data Platform Contributions</h3>
+                <p>Contributed to data platform documentation and physical activity databases, ensuring quality and accessibility of training data for AI systems.</p>
+            </div>
+
+            <hr>
+
+            <div class="technical-section">
+                <h2>Technical Focus Areas</h2>
+                <div class="focus-grid">
+                    <div class="focus-item">Artificial Intelligence & Machine Learning</div>
+                    <div class="focus-item">Computer Vision & Image Recognition</div>
+                    <div class="focus-item">Natural Language Processing</div>
+                    <div class="focus-item">Vector Databases & Semantic Search</div>
+                    <div class="focus-item">Data Engineering & ETL Processes</div>
+                    <div class="focus-item">Cloud Infrastructure (Google Cloud Platform)</div>
+                </div>
+            </div>
+
+            <div class="approach-section">
+                <h2>Approach & Methodology</h2>
+                <p>Focused on delivering practical AI solutions that enhance user experience and operational efficiency. Strong emphasis on:</p>
+                <ul>
+                    <li>Translating complex business requirements into technical solutions</li>
+                    <li>Balancing innovation with production-ready implementations</li>
+                    <li>Collaborating across teams including product, engineering, and UX research</li>
+                    <li>Maintaining documentation and knowledge sharing practices</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="tech-stack-section">
+                <h2>Technologies & Tools Stack</h2>
+                
+                <div class="tech-category">
+                    <h3>🤖 AI/ML & APIs</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge ai-ml">TensorFlow</span>
+                        <span class="tech-badge ai-ml">Gemini API</span>
+                        <span class="tech-badge ai-ml">OpenAI API</span>
+                        <span class="tech-badge ai-ml">Claude AI API</span>
+                        <span class="tech-badge ai-ml">Agent Development Kit (ADK)</span>
+                        <span class="tech-badge ai-ml">Nano Banana (Image Gen)</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge cloud">Google Cloud Run</span>
+                        <span class="tech-badge cloud">Cloud Functions</span>
+                        <span class="tech-badge cloud">BigQuery</span>
+                        <span class="tech-badge cloud">Docker</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>🗄️ Databases & Data Storage</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge database">MongoDB</span>
+                        <span class="tech-badge database">Pinecone</span>
+                        <span class="tech-badge database">PostgreSQL</span>
+                        <span class="tech-badge database">BigQuery</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>🛠️ Frameworks & Libraries</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge frameworks">Streamlit</span>
+                        <span class="tech-badge frameworks">Uvicorn</span>
+                        <span class="tech-badge frameworks">Pydantic</span>
+                        <span class="tech-badge frameworks">Python</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>📊 Development & Collaboration Tools</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge dev-tools">GitHub</span>
+                        <span class="tech-badge dev-tools">Jira</span>
+                        <span class="tech-badge dev-tools">Notion</span>
+                        <span class="tech-badge dev-tools">Looker Studio</span>
+                        <span class="tech-badge dev-tools">Postman</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3>🧪 Testing & Performance</h3>
+                    <div class="tech-grid">
+                        <span class="tech-badge testing">Locust</span>
+                        <span class="tech-badge testing">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#AIEngineer</span>
+                <span class="hashtag">#DataScientist</span>
+                <span class="hashtag">#ComputerVision</span>
+                <span class="hashtag">#MachineLearning</span>
+                <span class="hashtag">#FitnessTech</span>
+                <span class="hashtag">#VectorDatabases</span>
+                <span class="hashtag">#NLP</span>
+                <span class="hashtag">#CloudComputing</span>
+                <span class="hashtag">#ETLPipelines</span>
+                <span class="hashtag">#AIInnovation</span>
+                <span class="hashtag">#TechnogymRD</span>
+                <span class="hashtag">#WorkoutRecognition</span>
+                <span class="hashtag">#PersonalizedFitness</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
