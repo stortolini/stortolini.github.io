@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterZ: Blockchain & Digital Assets Online Master</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var (--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .image-gallery {
+            margin: 2rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            border-radius: var(--radius-md);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .image-gallery::-webkit-scrollbar {
+            height: 10px;
+        }
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: var(--color-dark-teal);
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: var(--color-mustard-yellow);
+        }
+        .gallery-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            margin: 0 1rem;
+            vertical-align: top;
+        }
+        .gallery-item:first-child {
+            margin-left: 2rem;
+        }
+        .gallery-item:last-child {
+            margin-right: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-hint {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .video-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .media-text.reverse {
+            flex-direction: row-reverse;
+        }
+        .media-text img {
+            width: 40%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text-content {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .media-text, .media-text.reverse {
+                flex-direction: column;
+            }
+            .media-text img {
+                width: 100%;
+            }
+        }
+        .quote-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--color-mustard-yellow);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            border-radius: var(--radius-md);
+        }
+        .quote-block h3 {
+            color: var(--color-dark-teal);
+            margin-top: 0;
+            font-style: normal;
+        }
+        .quote-block cite {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .single-image {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .single-image img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .single-image figcaption {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>MasterZ: Blockchain & Digital Assets Online Master</h1>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <p>I've attended an online master's program about the world of <strong>blockchains</strong> and <strong>digital assets</strong>.</p>
+            
+            <p>The Master was promoted by <a href="https://www.masterzblockchain.com/" target="_blank" rel="noreferrer noopener">MasterZ.|Blockchain & Digital Assets</a> (<a href="https://www.aioblockchain.it/" target="_blank" rel="noreferrer noopener">AIO Blockchain Lab</a>).</p>
+
+            <p>At the end of the lectures, I was in the <strong>TheWorkerZ group</strong> and we worked on the project work, presented by <strong>Celo</strong>. In particular, using Celo's blockchain and mobile-first infrastructure 🌳, we drafted a paper detailing an economic and technical solution for climate action.</p>
+
+            <div class="single-image">
+                <figure>
+                    <img src="https://sotortolini.files.wordpress.com/2022/07/project-work-by-celo.png?w=724" alt="Paper documentation" style="max-width: 316px;">
+                    <figcaption>Paper documentation</figcaption>
+                </figure>
+            </div>
+
+            <div class="quote-block">
+                <h3>Abstract</h3>
+                <p>Optimizing the life-cycle of plastic products, within this circular economy model, reduces the input of pollutant material into the environment, consequently reducing the impact of the individual community's so-called "Plastic Footprint," while, with the use of Blockchain technology, public involvement in plastic collection and recycling is aided, as each user will be credited with a return in WasteWise Token (WWT), a utility token built on the Celo chain.</p>
+                <p>It will be possible to collect WWT, for example, by placing plastic or other recyclables at WasteWise network collection points. Depending on the type and amount of material recycled, you will receive an amount of WWT directly into your wallet (virtual wallet). It will be possible to convert the WasteWise Tokens collected into any cryptocurrency supported by the Celo chain at any time, directly from the WasteWise centralized application.</p>
+                <p>Recycling Spots and the eco-sustainable market guarantee circularity and high activity in the Blockchain network, with numerous transactions day by day, while the success of the project guarantees an excellent investment opportunity, as it results in an increase in the value of a single token, a stimulus for "holding" activities of large WWT capitals and for mining operations (eco-sustainable, without electricity consumption).</p>
+            </div>
+
+            <h2>Certificate of Completion</h2>
+            <div class="single-image">
+                <figure>
+                    <img src="https://sotortolini.files.wordpress.com/2022/07/cert-25eed-sofia-tortolini-307.png?w=1024" alt="Certificate of completion - MasterZ 2022">
+                    <figcaption>Certificate of completion - MasterZ 2022</figcaption>
+                </figure>
+            </div>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#Blockchain</span>
+                <span class="hashtag">#DigitalAssets</span>
+                <span class="hashtag">#Celo</span>
+                <span class="hashtag">#CircularEconomy</span>
+                <span class="hashtag">#ClimateAction</span>
+                <span class="hashtag">#WasteWiseToken</span>
+                <span class="hashtag">#MasterZ2022</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
