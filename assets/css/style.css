@@ -253,6 +253,51 @@ section {
     margin: 0 auto var(--spacing-md) auto;
 }
 
+/* About Section - make it relative for absolute positioning */
+.about-content {
+    position: relative;
+    padding-bottom: 80px; /* Add space for the funny button */
+}
+
+/* Funny button styling */
+.funny-btn {
+    position: absolute !important;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d) !important;
+    border: none !important;
+    padding: 15px 30px !important;
+    font-weight: bold !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    
+    /* Funny blob shape using border-radius */
+    border-radius: 40% 60% 70% 30% / 60% 30% 70% 40% !important;
+    
+    /* Add rotation and animation */
+    transform: rotate(-5deg);
+    transition: all 0.3s ease !important;
+    box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+}
+
+.funny-btn:hover {
+    transform: rotate(5deg) scale(1.1);
+    border-radius: 60% 40% 30% 70% / 40% 70% 30% 60% !important;
+    box-shadow: 0 8px 25px rgba(255,107,107,0.6);
+    background: linear-gradient(45deg, #ffd93d, #ff6b6b) !important;
+}
+
+/* Add a wiggle animation on hover */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(-2deg); }
+}
+
+.funny-btn:hover {
+    animation: wiggle 0.5s ease-in-out;
+}
+
 /* Sezione Articoli/News */
 .news-section {
     background-color: var(--color-dark-teal); 
