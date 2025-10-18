@@ -148,5 +148,64 @@
         <p>&copy; 2025 Sofia Tortolini. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe the fingerprint icon
+        document.addEventListener('DOMContentLoaded', () => {
+            const fingerprintIcon = document.querySelector('.contact-icon-image');
+            if (fingerprintIcon) {
+                observer.observe(fingerprintIcon);
+            }
+        });
+
+        // Typewriter effect for h2 elements
+        const typewriterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
+                    const h2 = entry.target;
+                    const text = h2.textContent;
+                    h2.textContent = '';
+                    h2.classList.add('typewriter', 'typed');
+                    
+                    let i = 0;
+                    const typeInterval = setInterval(() => {
+                        if (i < text.length) {
+                            h2.textContent += text.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(typeInterval);
+                            // Remove cursor after typing is complete
+                            setTimeout(() => {
+                                h2.classList.remove('typewriter');
+                            }, 1000);
+                        }
+                    }, 50); // Adjust typing speed here (lower = faster)
+                }
+            });
+        }, observerOptions);
+
+        // Observe all h2 elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const h2Elements = document.querySelectorAll('h2');
+            h2Elements.forEach(h2 => {
+                typewriterObserver.observe(h2);
+            });
+        });
+    </script>
+
 </body>
 </html>

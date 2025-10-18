@@ -427,6 +427,45 @@ section {
     transform: translateY(-3px);
 }
 
+/* Contact icon animations */
+.contact-icon-image {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.contact-icon-image.animate-in {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Optional: Add a subtle pulse effect on hover */
+.contact-icon-image:hover {
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* Footer */
 .main-footer {
     text-align: center;
@@ -513,4 +552,47 @@ section {
     h2 {
         font-size: 2.2rem !important;
     }
+}
+
+/* Typewriter animation for h2 elements */
+h2.typewriter {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+h2.typewriter::after {
+    content: '|';
+    position: absolute;
+    right: -10px;
+    animation: blink 1s infinite;
+    color: var(--color-burgundy);
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.typewriter-text {
+    display: inline-block;
+    opacity: 0;
+    animation: typewriter 2s steps(30) forwards;
+}
+
+@keyframes typewriter {
+    from { 
+        width: 0;
+        opacity: 1;
+    }
+    to { 
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* Ensure h2 elements maintain their center alignment */
+section h2.typewriter {
+    display: block;
+    text-align: center;
 }
