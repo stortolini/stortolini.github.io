@@ -259,34 +259,6 @@ section {
     padding-bottom: 80px; /* Add space for the funny button */
 }
 
-/* Funny button styling */
-.funny-btn {
-    position: absolute !important;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(45deg, #ff6b6b, #ffd93d) !important;
-    border: none !important;
-    padding: 15px 30px !important;
-    font-weight: bold !important;
-    color: #fff !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    
-    /* Funny blob shape using border-radius */
-    border-radius: 40% 60% 70% 30% / 60% 30% 70% 40% !important;
-    
-    /* Add rotation and animation */
-    transform: rotate(-5deg);
-    transition: all 0.3s ease !important;
-    box-shadow: 0 5px 15px rgba(255,107,107,0.4);
-}
-
-.funny-btn:hover {
-    transform: rotate(5deg) scale(1.1);
-    border-radius: 60% 40% 30% 70% / 40% 70% 30% 60% !important;
-    box-shadow: 0 8px 25px rgba(255,107,107,0.6);
-    background: linear-gradient(45deg, #ffd93d, #ff6b6b) !important;
-}
-
 /* Add a wiggle animation on hover */
 @keyframes wiggle {
     0%, 100% { transform: rotate(-5deg); }
@@ -294,8 +266,117 @@ section {
     75% { transform: rotate(-2deg); }
 }
 
-.funny-btn:hover {
-    animation: wiggle 0.5s ease-in-out;
+/* Film effect button styles */
+.filmeffect-btn {
+    position: absolute !important;
+    bottom: 20px;
+    right: 20px;
+    background: #1a1a1a !important;
+    color: #fff !important;
+    border: 2px solid #333 !important;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.filmeffect-btn::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 10px,
+            #000 10px,
+            #000 20px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 10px,
+            #000 10px,
+            #000 20px
+        );
+    opacity: 0.3;
+    pointer-events: none;
+    animation: filmStrip 2s linear infinite;
+}
+
+.filmeffect-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        transparent 100%
+    );
+    animation: projectorLight 3s ease-in-out infinite;
+}
+
+/* Film perforations on the sides */
+.filmeffect-btn {
+    box-shadow: 
+        inset -8px 0 0 #000,
+        inset 8px 0 0 #000,
+        inset 0 0 0 2px #333;
+}
+
+/* Flickering effect */
+@keyframes filmStrip {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
+}
+
+@keyframes projectorLight {
+    0%, 100% { left: -100%; opacity: 0; }
+    50% { left: 100%; opacity: 1; }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.7; }
+    94% { opacity: 1; }
+    95% { opacity: 0.8; }
+    96% { opacity: 1; }
+}
+
+.filmeffect-btn:hover {
+    animation: flicker 2s infinite;
+    background: #2a2a2a !important;
+    transform: scale(1.05);
+}
+
+.filmeffect-btn:hover::after {
+    animation-duration: 1.5s;
+}
+
+/* Old cinema countdown effect on click */
+.filmeffect-btn:active {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+.filmeffect-btn:active::before {
+    background: radial-gradient(circle at center, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.1) 31%, 
+        rgba(255, 255, 255, 0.1) 32%, 
+        transparent 33%
+    );
+    animation: countdown 0.5s ease-out;
+}
+
+@keyframes countdown {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(3) rotate(360deg); opacity: 0; }
 }
 
 /* Sezione Articoli/News */
