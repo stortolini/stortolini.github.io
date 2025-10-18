@@ -64,7 +64,7 @@ section {
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease-out forwards; 
-    opacity: 0;
+    opacity: 1; /* Remove opacity: 0 */
 }
 
 @keyframes fadeIn {
@@ -123,7 +123,7 @@ section {
     justify-content: center; 
     align-items: center; 
     animation: fadeIn 1s ease-out forwards; 
-    opacity: 0;
+    opacity: 1; /* Remove opacity: 0 */
 }
 
 /* Nuovo Wrapper per il contenuto e l'immagine nella sezione Hero */
@@ -264,7 +264,7 @@ section {
     border-radius: 0; 
     box-shadow: none; 
     animation: fadeIn 1s ease-out forwards;
-    opacity: 0;
+    opacity: 1; /* Remove opacity: 0 */
 }
 
 .news-section h2 {
@@ -307,7 +307,7 @@ section {
     border-radius: 0;
     box-shadow: none;
     animation: fadeIn 1s ease-out forwards;
-    opacity: 0;
+    opacity: 1; /* Remove opacity: 0 */
 }
 
 .portfolio-section h2 {
