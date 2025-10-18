@@ -37,6 +37,14 @@
         </nav>
     </header>
 
+    <div class="alert-box" id="wip-alert">
+        <div class="alert-content">
+            <span class="alert-icon">⚠️</span>
+            <p><strong>Work in Progress:</strong> Some parts of this website are still under development. Thank you for your patience!</p>
+            <button class="alert-close" onclick="closeAlert()" aria-label="Close alert">×</button>
+        </div>
+    </div>
+
     <main>
         <section id="hero-section" class="hero-section">
             <div class="hero-content-wrapper">
@@ -168,6 +176,21 @@
     </footer>
 
     <script>
+        // Function to close the alert
+        function closeAlert() {
+            const alert = document.getElementById('wip-alert');
+            alert.style.display = 'none';
+            // Optional: Save to localStorage to remember user dismissed it
+            localStorage.setItem('wip-alert-dismissed', 'true');
+        }
+
+        // Check if user previously dismissed the alert
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('wip-alert-dismissed') === 'true') {
+                document.getElementById('wip-alert').style.display = 'none';
+            }
+        });
+
         // Intersection Observer for scroll animations
         const observerOptions = {
             root: null,
