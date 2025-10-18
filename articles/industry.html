@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Factories and Industry 4.0: A Field Experience</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .image-gallery {
+            margin: 2rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            border-radius: var(--radius-md);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .image-gallery::-webkit-scrollbar {
+            height: 10px;
+        }
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: var(--color-dark-teal);
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: var(--color-mustard-yellow);
+        }
+        .gallery-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            margin: 0 1rem;
+            vertical-align: top;
+        }
+        .gallery-item:first-child {
+            margin-left: 2rem;
+        }
+        .gallery-item:last-child {
+            margin-right: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-hint {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .media-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .media-text.reverse {
+            flex-direction: row-reverse;
+        }
+        .media-text img {
+            width: 40%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text-content {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .media-text, .media-text.reverse {
+                flex-direction: column;
+            }
+            .media-text img {
+                width: 100%;
+            }
+        }
+        .company-info {
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        .company-info h2 {
+            color: var(--color-dark-teal);
+            margin-top: 0;
+        }
+        .sensor-info {
+            background-color: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+            border-left: 4px solid var(--color-mustard-yellow);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Smart Factories and Industry 4.0: A Field Experience</h1>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <p>Developing smart factories provides an incredible opportunity for the industrial sector to enter the fourth industrial revolution. Analyzing the vast amount of big data collected from sensors on a factory floor provides <strong>real-time visibility of production assets and can provide tools to perform predictive maintenance to minimize downtime</strong>.</p>
+            
+            <p><strong>Using high-tech IoT devices in smart factories leads to higher productivity and better quality</strong>. Replacing manual inspection business models with AI-based visual information reduces production errors and saves time and money. With minimal investment, quality control personnel can set up a cloud-connected smartphone to monitor manufacturing processes from wherever they are. By applying machine learning algorithms, manufacturers can detect errors immediately, rather than at an advanced stage when a repair would be more expensive.</p>
+
+            <div class="company-info">
+                <h2><a href="http://www.sca-srl.it/" target="_blank" rel="noreferrer noopener">SCA - Mechanical Construction</a></h2>
+                <div class="media-text">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/img20230511093226.jpg?w=768" alt="SCA facility entrance">
+                    <div class="media-text-content">
+                        <h3>Trip to transformation: from a course to the field</h3>
+                        <p>Carpenteria meccanica di precisione</p>
+                        <p>Mercato Saraceno (FC)</p>
+                    </div>
+                </div>
+            </div>
+
+            <p>On the occasion of a collaboration between my DTM course and the SCA company, I went with my lab group to visit the production plant. After an introductory phase on the internal processes of the factory, <strong>our challenge was to apply what we had studied in class in practice.</strong></p>
+
+            <div class="sensor-info">
+                <p><strong>Using a sensor we were to introduce a small digital transformation to help the enterprise manage some of its operations.</strong> The <a href="https://shop.espruino.com/puckjs" target="_blank" rel="noreferrer noopener">puck.js sensor</a> is an intelligent Bluetooth button. With the Espruino JavaScript interpreter on its internal ARM microcontroller, software can be uploaded, debugged and modified wirelessly from any modern computer or phone, making development of embedded devices significantly easier. It has built-in sensors, lights, infrared transmitter, GPIO, and can even control other Bluetooth LE devices.</p>
+            </div>
+
+            <p>On that day, we collected data, and it will be our challenge to analyze it and produce a design proposal for the company.</p>
+
+            <h2>Factory Visit Gallery</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/img20230511094246.jpg?w=768" alt="Factory machinery">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/20230511_100510.jpg?w=1024" alt="Production floor">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/img20230511114940.jpg?w=1024" alt="Team working on sensor setup">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2023/05/img20230511103213.jpg?w=768" alt="Industrial equipment">
+                </div>
+            </div>
+            <p class="gallery-hint">← Scroll horizontally to see more images →</p>
+
+            <p>A very nice day, where I realized how important studying these subjects and collaborating with companies is.</p>
+
+            <p>Special thanks to <a rel="noreferrer noopener" href="https://www.alexandria.unisg.ch/entities/person/Simon_Mayer/publications" target="_blank">Prof. Mayer</a> from the University of St. Gallen - Switzerland</p>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#Industry4.0</span>
+                <span class="hashtag">#SmartFactory</span>
+                <span class="hashtag">#IoT</span>
+                <span class="hashtag">#DigitalTransformation</span>
+                <span class="hashtag">#PredictiveMaintenance</span>
+                <span class="hashtag">#PuckJS</span>
+                <span class="hashtag">#UniversityCollaboration</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
