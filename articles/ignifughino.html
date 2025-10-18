@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignifughino: Sustainable Children's Cardboard Seat Design</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .main-header {
+            background-color: #1a5f7a;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff !important;
+        }
+        .hashtag {
+            display: inline-block;
+            background-color: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            margin: 0.2rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out;
+        }
+        .hashtag:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-2px);
+        }
+        #back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #back-btn:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .image-gallery {
+            margin: 2rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            border-radius: var(--radius-md);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .image-gallery::-webkit-scrollbar {
+            height: 10px;
+        }
+        .image-gallery::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb {
+            background: var(--color-dark-teal);
+            border-radius: 5px;
+        }
+        .image-gallery::-webkit-scrollbar-thumb:hover {
+            background: var(--color-mustard-yellow);
+        }
+        .gallery-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            margin: 0 1rem;
+            vertical-align: top;
+        }
+        .gallery-item:first-child {
+            margin-left: 2rem;
+        }
+        .gallery-item:last-child {
+            margin-right: 2rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-hint {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .media-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .media-text.reverse {
+            flex-direction: row-reverse;
+        }
+        .media-text img {
+            width: 40%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .media-text-content {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .media-text, .media-text.reverse {
+                flex-direction: column;
+            }
+            .media-text img {
+                width: 100%;
+            }
+        }
+        .single-image {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .single-image img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .single-image figcaption {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #666;
+        }
+        .separator {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+            margin: 3rem 0;
+        }
+        .team-section {
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        .team-section h3 {
+            color: var(--color-dark-teal);
+            margin-top: 0;
+        }
+        .team-list {
+            column-count: 2;
+            column-gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .team-list {
+                column-count: 1;
+            }
+        }
+        .download-button {
+            display: inline-block;
+            background: var(--color-mustard-yellow);
+            color: var(--color-dark-teal);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            display: block;
+            text-align: center;
+            max-width: fit-content;
+        }
+        .download-button:hover {
+            background-color: var(--color-salmon-pink);
+            color: var(--color-text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Ignifughino: Sustainable Children's Cardboard Seat Design</h1>
+        <a href="../index.html" id="back-btn">Back to Home</a>
+    </header>
+    <main>
+        <section class="article-content">
+            <p>During the 2020 lockdown, I had the opportunity to attend a course on creating Start-Ups and launching an object into the market: it was really inspiring, working in groups and combining knowledge. We created as a final product, studying the market, the offerings and the industry, a cardboard seat, structured in size and adaptability for children.</p>
+
+            <h2>Product Design Gallery</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/ignifudino.png?w=300" alt="Ignifughino design concept">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/spaccato.png?w=300" alt="Technical cross-section">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sotortolini.files.wordpress.com/2020/10/bdgbds.png?w=300" alt="3D model view">
+                </div>
+            </div>
+            <p class="gallery-hint">← Scroll horizontally to see more images →</p>
+
+            <p>The collaborative nature of the project was another highlight. Working in a team allowed us to pool our strengths, exchange ideas, and overcome challenges together. Each team member brought unique perspectives and skills, fostering a dynamic environment where creativity thrived. The process of brainstorming, designing, and refining our ideas taught us the value of teamwork and effective communication.</p>
+
+            <div class="single-image">
+                <figure>
+                    <img src="https://sotortolini.wordpress.com/wp-content/uploads/2020/10/immagine-2024-12-19-102031.png?w=1024" alt="Project documentation">
+                </figure>
+            </div>
+
+            <hr class="separator">
+
+            <div class="media-text">
+                <img src="https://sotortolini.wordpress.com/wp-content/uploads/2020/10/tipi-cartone-imballaggio-copertina.webp?w=1024" alt="Types of cardboard materials">
+                <div class="media-text-content">
+                    <p>One of the most rewarding aspects of the project was its emphasis on <strong>sustainability</strong>. <strong>Cardboard</strong>, being a recyclable and biodegradable material, aligned perfectly with the growing need for eco-friendly solutions. By using cardboard, we demonstrated how simple, everyday materials could be repurposed creatively to address both environmental concerns and practical needs. This choice reflected not only our commitment to sustainability but also a desire to encourage responsible consumer habits from an early age.</p>
+                </div>
+            </div>
+
+            <div class="media-text reverse">
+                <img src="https://sotortolini.wordpress.com/wp-content/uploads/2020/10/taglio.jpeg?w=1024" alt="Manual cutting process">
+                <div class="media-text-content">
+                    <figure style="margin-bottom: 1rem;">
+                        <img src="https://sotortolini.wordpress.com/wp-content/uploads/2020/10/1.jpeg?w=1024" alt="Prototyping process" style="width: 100%; border-radius: var(--radius-md);">
+                    </figure>
+                    <p>Prototyping the product manually was a particularly enriching experience. From sketching initial designs to cutting and assembling the cardboard, we gained hands-on experience in bringing an idea to life. This practical phase was crucial, as it allowed us to test the durability, adaptability, and functionality of the seat, ensuring it met the needs of young children. Manual prototyping also helped us identify areas for improvement and refine the product iteratively.</p>
+                    <p><em>Yep, that was my bed!</em></p>
+                </div>
+            </div>
+
+            <div class="media-text">
+                <img src="https://sotortolini.wordpress.com/wp-content/uploads/2020/10/d4cr_logo402x.png?w=850" alt="Design for Creative Recycling logo">
+                <div class="media-text-content">
+                    <p>Designing for children required a special focus on creativity and adaptability. We aimed to create a seat that was not only functional but also fun, visually appealing, and safe for kids. The project encouraged us to think outside the box, merging practicality with imagination to craft a product that could resonate with children and their families.</p>
+                </div>
+            </div>
+
+            <h2>Our Complete Analysis</h2>
+            <a href="https://sotortolini.wordpress.com/wp-content/uploads/2024/12/ignifughino.pdf" class="download-button">VISUALIZE THE COMPLETE ANALYSIS ONLINE</a>
+
+            <p>The team conducted extensive market and sector analysis, identifying a niche for eco-friendly and multifunctional children's furniture. The product, designed as a playful and customizable animal-shaped seat, emphasized safety, creativity, and sustainability. The project included prototyping, surveys, and the application of entrepreneurial tools such as market segmentation, competitive analysis, and value proposition development. Distribution strategies considered e-commerce, specialized stores, and hypermarkets to reach potential consumers. Despite challenges in entrepreneurial analysis and teamwork, the project highlighted collaboration, innovation, and environmental responsibility.</p>
+
+            <div class="single-image">
+                <figure>
+                    <img src="https://sotortolini.wordpress.com/wp-content/uploads/2020/10/immagine-2024-12-19-102055.png?w=1024" alt="Final product presentation">
+                </figure>
+            </div>
+
+            <div class="team-section">
+                <h3>In the team:</h3>
+                <div class="team-list">
+                    <p>Nicolò Dragoni<br>
+                    Alberto Duò<br>
+                    Giorgia Lucchese<br>
+                    Angelo Muscia Masuzzo<br>
+                    Stefano Merli<br>
+                    Marco Mucci<br>
+                    Filippo Pierini<br>
+                    Marco Pirazzi</p>
+                </div>
+            </div>
+        </section>
+        <footer class="main-footer">
+            <div class="hashtags">
+                <span class="hashtag">#SustainableDesign</span>
+                <span class="hashtag">#EcoFriendlyFurniture</span>
+                <span class="hashtag">#CardboardChair</span>
+                <span class="hashtag">#ChildrenCreativity</span>
+                <span class="hashtag">#CustomizableProducts</span>
+                <span class="hashtag">#MultifunctionalDesign</span>
+                <span class="hashtag">#SafetyFirst</span>
+                <span class="hashtag">#MarketAnalysis</span>
+                <span class="hashtag">#Prototyping</span>
+                <span class="hashtag">#ValueProposition</span>
+                <span class="hashtag">#Teamwork</span>
+                <span class="hashtag">#Entrepreneurship</span>
+                <span class="hashtag">#InnovativeFurniture</span>
+                <span class="hashtag">#EnvironmentalResponsibility</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
