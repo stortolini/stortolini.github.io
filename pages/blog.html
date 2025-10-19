@@ -73,13 +73,15 @@
             top: 20px;
             left: 20px;
             color: var(--color-burgundy);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             font-family: 'Montserrat', sans-serif;
             background: var(--color-text-light);
-            padding: 15px 25px;
+            padding: 10px 15px;
             border-radius: var(--radius-md);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            max-width: 200px;
         }
         
         #back-btn {
@@ -88,22 +90,36 @@
             right: 20px;
             background: var(--color-mustard-yellow);
             color: var(--color-dark-teal);
-            padding: 12px 24px;
+             padding: 10px 20px;
             border-radius: var(--radius-md);
             text-decoration: none;
             font-weight: bold;
             font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.8px;
+            font-size: 14px;
             transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
         }
         
-        #back-btn:hover {
-            background-color: var(--color-salmon-pink);
-            color: var(--color-mustard-yellow);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            #info {
+                font-size: 12px;
+                padding: 8px 12px;
+                max-width: 150px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            #back-btn {
+                font-size: 12px;
+                padding: 8px 16px;
+                top: auto;
+                bottom: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
@@ -115,8 +131,11 @@
     <script>
         const width = window.innerWidth;
         const height = window.innerHeight;
-        const layerSpacing = width / 5;
-        const nodeSpacing = height / 8;
+        
+        // Responsive sizing based on viewport
+        const isMobile = width < 768;
+        const minNodeSpacing = isMobile ? 80 : 120;
+        const minLayerSpacing = isMobile ? width / 4 : width / 6;
         
         // Define neural network structure
         const layers = [
@@ -160,12 +179,17 @@
             }
         ];
         
+        // Calculate optimal spacing
+        const maxNodesInLayer = Math.max(...layers.map(l => l.nodes.length));
+        const nodeSpacing = Math.max(minNodeSpacing, (height * 0.8) / maxNodesInLayer);
+        const layerSpacing = Math.max(minLayerSpacing, (width * 0.8) / (layers.length + 1));
+        
         // Create nodes with positions
         const nodes = [];
         const sizeMap = {
-            small: 25,
-            medium: 35,
-            large: 45
+            small: isMobile ? 20 : 25,
+            medium: isMobile ? 30 : 35,
+            large: isMobile ? 40 : 45
         };
         
         // Color palette matching the main site
@@ -177,16 +201,24 @@
             '#65558F'  // back to dark-teal
         ];
         
+        // Calculate total network dimensions
+        const networkWidth = layerSpacing * (layers.length - 1);
+        const networkHeight = nodeSpacing * (maxNodesInLayer - 1);
+        
+        // Center the network in the viewport
+        const xOffset = (width - networkWidth) / 2;
+        const yOffset = (height - networkHeight) / 2;
+        
         layers.forEach((layer, layerIndex) => {
-            const x = layerSpacing * (layerIndex + 0.5);
+            const x = xOffset + layerSpacing * layerIndex;
             const layerHeight = layer.nodes.length * nodeSpacing;
-            const yOffset = (height - layerHeight) / 2;
+            const layerYOffset = yOffset + (networkHeight - layerHeight) / 2;
             
             layer.nodes.forEach((node, nodeIndex) => {
                 nodes.push({
                     ...node,
                     x: x,
-                    y: yOffset + nodeSpacing * (nodeIndex + 0.5),
+                    y: layerYOffset + nodeSpacing * nodeIndex,
                     radius: sizeMap[node.size],
                     layer: layerIndex,
                     color: nodeColors[layerIndex]
@@ -250,13 +282,18 @@
         const text = nodeGroup.append('text')
             .attr('class', 'node-text')
             .text(d => d.title)
-            .style('font-size', d => d.size === 'small' ? '12px' : d.size === 'medium' ? '14px' : '16px')
+            .style('font-size', d => {
+                if (isMobile) {
+                    return d.size === 'small' ? '10px' : d.size === 'medium' ? '12px' : '14px';
+                }
+                return d.size === 'small' ? '12px' : d.size === 'medium' ? '14px' : '16px';
+            })
             .style('opacity', d => d.size === 'large' ? 1 : 0);
         
         // Zoom functionality
         let currentScale = 1;
         const zoom = d3.zoom()
-            .scaleExtent([0.5, 5])
+            .scaleExtent([0.3, 5])
             .on('zoom', (event) => {
                 g.attr('transform', event.transform);
                 currentScale = event.transform.k;
@@ -266,12 +303,14 @@
                     .duration(200)
                     .style('opacity', d => {
                         if (d.size === 'large') return 1;
-                        if (d.size === 'medium' && currentScale > 1.5) return 1;
-                        if (d.size === 'small' && currentScale > 2.5) return 1;
+                        if (d.size === 'medium' && currentScale > 1.0) return 1;
+                        if (d.size === 'small' && currentScale > 1.8) return 1;
                         return 0;
                     })
                     .style('font-size', d => {
-                        const baseSize = d.size === 'small' ? 10 : d.size === 'medium' ? 12 : 14;
+                        const baseSize = isMobile 
+                            ? (d.size === 'small' ? 10 : d.size === 'medium' ? 12 : 14)
+                            : (d.size === 'small' ? 12 : d.size === 'medium' ? 14 : 16);
                         return `${baseSize / Math.sqrt(currentScale)}px`;
                     });
             });
