@@ -404,7 +404,7 @@ section {
     background-color: var(--color-dark-teal); 
     color: var(--color-text-light); 
     text-align: center;
-    padding: var(--spacing-xl) 0; 
+    padding: var(--spacing-xl) var(--spacing-lg); 
     margin: var(--spacing-lg) 0; 
     max-width: 100%; 
     border-radius: 0; 
@@ -672,6 +672,10 @@ section {
     .news-item {
         font-size: 1.1rem;
         padding: var(--spacing-sm);
+    }
+
+    .news-section {
+        padding: var(--spacing-lg) var(--spacing-md); /* Reduce padding on mobile but keep horizontal spacing */
     }
 
     .project-card h3 {
