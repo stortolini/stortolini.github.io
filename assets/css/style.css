@@ -25,14 +25,14 @@
     --color-text-dark: #1D192B;  
     --color-text-light: #F7F2FA; 
 
-    /* Spaziature Comuni */
+    /* Spaziature */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 3rem;
     --spacing-xl: 4rem;
 
-    /* Border Radius Comuni */
+    /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 15px;
     --radius-lg: 25px;
@@ -69,7 +69,7 @@ a:hover {
     color: var(--color-salmon-pink);
 }
 
-/* Stile comune per le sezioni */
+/* Stile per le sezioni */
 section {
     padding: var(--spacing-lg);
     margin: var(--spacing-md) auto; 
@@ -78,7 +78,7 @@ section {
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease-out forwards; 
-    opacity: 1; /* Remove opacity: 0 */
+    opacity: 1;
 }
 
 @keyframes fadeIn {
@@ -137,10 +137,10 @@ section {
     justify-content: center; 
     align-items: center; 
     animation: fadeIn 1s ease-out forwards; 
-    opacity: 1; /* Remove opacity: 0 */
+    opacity: 1;
 }
 
-/* Nuovo Wrapper per il contenuto e l'immagine nella sezione Hero */
+/* Wrapper per il contenuto e l'immagine nella sezione Hero */
 .hero-content-wrapper {
     max-width: 1200px; 
     width: 100%; 
@@ -207,7 +207,6 @@ section {
 
 /* Media Query per la responsività dell'immagine */
 @media (max-width: 1024px) {
-    /* Mantieni le regole esistenti per la responsività del layout */
     .hero-section {
         flex-direction: column;
         text-align: center;
@@ -273,10 +272,10 @@ section {
     margin: 0 auto var(--spacing-md) auto;
 }
 
-/* About Section - make it relative for absolute positioning */
+/* About Section */
 .about-content {
     position: relative;
-    padding-bottom: 80px; /* Add space for the funny button */
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
 }
@@ -290,16 +289,15 @@ section {
     margin-top: var(--spacing-md);
 }
 
-/* Add a wiggle animation on hover */
 @keyframes wiggle {
     0%, 100% { transform: rotate(-5deg); }
     25% { transform: rotate(-8deg); }
     75% { transform: rotate(-2deg); }
 }
 
-/* Film effect button styles - remove absolute positioning */
+/* Film effect button styles */
 .filmeffect-btn {
-    position: relative !important; /* Changed from static to relative */
+    position: relative !important; 
     background: #1a1a1a !important;
     color: #fff !important;
     border: 2px solid #333 !important;
@@ -419,7 +417,7 @@ section {
     border-radius: 0; 
     box-shadow: none; 
     animation: fadeIn 1s ease-out forwards;
-    opacity: 1; /* Remove opacity: 0 */
+    opacity: 1;
 }
 
 .news-section h2 {
@@ -462,7 +460,7 @@ section {
     border-radius: 0;
     box-shadow: none;
     animation: fadeIn 1s ease-out forwards;
-    opacity: 1; /* Remove opacity: 0 */
+    opacity: 1; 
 }
 
 .portfolio-section h2 {
@@ -498,27 +496,27 @@ section {
     display: flex;
     flex-direction: column;
     background-color: var(--color-light-blue);
-    border: 2px solid var(--color-burgundy); /* Add border */
+    border: 2px solid var(--color-burgundy);
     border-radius: var(--radius-xl);
     overflow: hidden;
     text-align: center;
     text-decoration: none;
     color: inherit;
-    height: 400px; /* Set a fixed height for consistent layout */
+    height: 400px; 
     position: relative;
     transition: background-color 0.3s ease-out;
 }
 
 .project-card img {
     width: 100%;
-    height: auto; /* Allow the height to adjust based on the aspect ratio */
-    aspect-ratio: 16 / 9; /* Maintain a consistent aspect ratio */
+    height: auto; 
+    aspect-ratio: 16 / 9; 
     object-fit: cover;
-    border-bottom: 2px solid var(--color-burgundy); /* Add border below the image */
+    border-bottom: 2px solid var(--color-burgundy); 
 }
 
 .project-card .project-description {
-    flex: 1; /* Ensure the description takes the remaining 50% */
+    flex: 1; 
     padding: var(--spacing-sm);
     position: relative;
     z-index: 2;
@@ -604,7 +602,6 @@ section {
     }
 }
 
-/* Optional: Add a subtle pulse effect on hover */
 .contact-icon-image:hover {
     animation: pulse 1s ease-in-out;
 }
@@ -634,7 +631,7 @@ section {
 /* Media Queries per la Responsività */
 @media (max-width: 1024px) {
     .hero-section {
-        flex-direction: column; /* Testo e immagine impilati su schermi più piccoli */
+        flex-direction: column; 
         text-align: center;
     }
 
@@ -684,7 +681,7 @@ section {
     }
 
     .news-section {
-        padding: var(--spacing-lg) var(--spacing-md); /* Reduce padding on mobile but keep horizontal spacing */
+        padding: var(--spacing-lg) var(--spacing-md);
     }
 
     .project-card h3 {
@@ -708,10 +705,10 @@ section {
 
 @media (max-width: 480px) {
     .hero-image {
-        max-width: 80%; /* Immagine più piccola su mobile */
+        max-width: 80%; 
     }
     .main-nav ul {
-        flex-direction: column; /* Menu a pila su schermi piccolissimi */
+        flex-direction: column; 
         gap: var(--spacing-xs);
     }
     .main-nav ul li {
@@ -719,7 +716,7 @@ section {
     }
 
     h1 {
-        font-size: 2rem !important; /* Forza la dimensione del titolo principale su mobile */
+        font-size: 2rem !important;
     }
 
     h2 {
@@ -764,7 +761,6 @@ h2.typewriter::after {
     }
 }
 
-/* Ensure h2 elements maintain their center alignment */
 section h2.typewriter {
     display: block;
     text-align: center;
