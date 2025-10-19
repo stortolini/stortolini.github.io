@@ -277,6 +277,17 @@ section {
 .about-content {
     position: relative;
     padding-bottom: 80px; /* Add space for the funny button */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for buttons in about section */
+.about-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
 }
 
 /* Add a wiggle animation on hover */
@@ -286,11 +297,9 @@ section {
     75% { transform: rotate(-2deg); }
 }
 
-/* Film effect button styles */
+/* Film effect button styles - remove absolute positioning */
 .filmeffect-btn {
-    position: absolute !important;
-    bottom: 20px;
-    right: 20px;
+    position: relative !important; /* Changed from static to relative */
     background: #1a1a1a !important;
     color: #fff !important;
     border: 2px solid #333 !important;
@@ -680,6 +689,20 @@ section {
 
     .project-card h3 {
         font-size: 1.3rem;
+    }
+
+    .about-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .about-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .about-content {
+        padding-bottom: var(--spacing-md);
     }
 }
 
