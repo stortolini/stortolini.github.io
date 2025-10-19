@@ -122,6 +122,53 @@
             opacity: 0.7;
         }
 
+        /* Mobile-specific image handling */
+        @media (max-width: 768px) {
+            .scene-background {
+                object-fit: contain; /* Change from cover to contain on mobile */
+                object-position: center;
+            }
+            
+            /* Alternative: if you want to keep cover but adjust positioning */
+            .film-frame[data-scene="1"] .scene-background,
+            .film-frame[data-scene="2"] .scene-background,
+            .film-frame[data-scene="3"] .scene-background,
+            .film-frame[data-scene="4"] .scene-background,
+            .film-frame[data-scene="5"] .scene-background {
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+        /* Very small screens (phones in portrait) */
+        @media (max-width: 480px) {
+            .film-frame {
+                min-width: 100vw;
+                height: 100%;
+                background-color: var(--film-bg); /* Fallback background */
+            }
+            
+            .scene-background {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* Ensure full image is visible */
+                object-position: center;
+            }
+            
+            .scene-content {
+                position: relative;
+                z-index: 5;
+                text-align: center;
+                max-width: 90%;
+                padding: 20px;
+                margin: 0 auto;
+                background: rgba(0, 0, 0, 0.8); /* Darker background for better readability */
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                animation: contentFlicker 30s infinite;
+            }
+        }
+
         .scene-content {
             position: relative;
             z-index: 5;
@@ -235,6 +282,16 @@
             
             .scroll-hint {
                 bottom: 80px;
+            }
+            
+            /* Ensure film strip height is appropriate for mobile */
+            .film-strip {
+                height: 80vh; /* Increased from 70vh for mobile */
+            }
+            
+            .film-container {
+                height: 100vh;
+                overflow: hidden;
             }
         }
 
